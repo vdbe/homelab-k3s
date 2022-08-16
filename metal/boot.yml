@@ -1,10 +1,21 @@
-- name: Start PXE server
-  hosts: localhost
-  roles:
-    - pxe_server
+#- name: Start PXE server
+#  hosts: localhost
+#  roles:
+#    - pxe_server
+#
+#- name: Provision bare metal machines
+#  hosts: metal
+#  gather_facts: false
+#  roles:
+#    - wake
 
-- name: Provision bare metal machines
+- name: Prepare vm
   hosts: metal
-  gather_facts: false
-  roles:
-    - wake
+  remote_user: ansible-user
+  tasks:
+    - name: Set authorized keys taken from url using lookup
+      become: true
+      ansible.posix.authorized_key:
+        user: root
+        state: present
+        key: "{{ ssh_public_key }}"

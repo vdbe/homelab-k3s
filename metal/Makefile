@@ -10,6 +10,7 @@ default: boot cluster
 boot: ~/.ssh/id_ed25519
 	ansible-playbook \
 		--inventory inventories/${env}.yml \
+		-e 'ansible_user=ansible-user' \
 		boot.yml
 
 cluster:

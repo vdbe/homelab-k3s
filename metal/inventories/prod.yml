@@ -2,9 +2,11 @@ metal:
   children:
     masters:
       hosts:
-        metal0: {ansible_host: 192.168.1.110, mac: '00:23:24:d1:f3:f0', disk: sda, network_interface: eno1}
-        metal1: {ansible_host: 192.168.1.111, mac: '00:23:24:d1:f4:d6', disk: sda, network_interface: eno1}
-        metal2: {ansible_host: 192.168.1.112, mac: '00:23:24:e7:04:60', disk: sda, network_interface: eno1}
+        metal0: { ansible_host: k3s-master-01.lab.ewood.dev }
+        metal1: { ansible_host: k3s-master-02.lab.ewood.dev }
+        metal2: { ansible_host: k3s-master-03.lab.ewood.dev }
     workers:
       hosts:
-        metal3: {ansible_host: 192.168.1.113, mac: '00:23:24:d1:f5:69', disk: sda, network_interface: eno1}
+        metal3: { ansible_host: k3s-worker-01.lab.ewood.dev }
+        metal4: { ansible_host: k3s-worker-02.lab.ewood.dev }
+        metal5: { ansible_host: k3s-worker-03.lab.ewood.dev }
